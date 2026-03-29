@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: object-mapping-practice
+  jackson:
+    default-property-inclusion: non_null
+
+

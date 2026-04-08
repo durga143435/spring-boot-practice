@@ -1,0 +1,27 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          myapp:
+            client-id: 
+            client-secret: 
+            authorization-grant-type: client_credentials
+            scope: api://f4529c21-c529-4b32-97d5-12624fc1102f/.default
+        provider:
+          myapp:
+            token-uri: https://login.microsoftonline.com/e10cfe05-170b-4213-a3f1-a8aee8bdad23/oauth2/v2.0/token
+#      resourceserver:
+#        jwt:
+#          issuer-uri: https://login.microsoftonline.com/e10cfe05-170b-4213-a3f1-a8aee8bdad23/v2.0
+
+
+logging:
+  structured:
+    format.console: ecs
+    json:
+      exclude: process.pid
+  pattern:
+#    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSS} [%X{correlationId}/%X{spanId}] %-5p [%t] %C{2} - %m%n"
+#    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%X{correlationId}] %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%X{traceId}] %logger{36} - %msg%n"

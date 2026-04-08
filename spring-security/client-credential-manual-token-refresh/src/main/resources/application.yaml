@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: client-credential-manual-token-refresh
+
+  security:
+    oauth2:
+      authHeaders:
+        client_id: 
+        client_secret: 
+        grant_type: client_credentials
+        scope: api://f4529c21-c529-4b32-97d5-12624fc1102f/.default
+      tokenUri: https://login.microsoftonline.com/e10cfe05-170b-4213-a3f1-a8aee8bdad23/oauth2/v2.0/token
+
+server:
+  port: 8082

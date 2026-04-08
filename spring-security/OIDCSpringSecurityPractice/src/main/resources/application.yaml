@@ -1,0 +1,45 @@
+server:
+  port: 8081
+
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          durga:
+#            client-id: 
+#            client-secret: 
+#            scope:
+#              - openid
+#              - profile
+#              - email
+#            authorization-grant-type: authorization_code
+#            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+#        provider:
+#          durga:
+#            issuer-uri: https://login.microsoftonline.com/e10cfe05-170b-4213-a3f1-a8aee8bdad23/v2.0
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          durga:
+            client-id: 
+            client-secret: 
+            scope:
+              - openid
+              - profile
+              - email
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          durga:
+            issuer-uri: https://login.microsoftonline.com/e10cfe05-170b-4213-a3f1-a8aee8bdad23/v2.0
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

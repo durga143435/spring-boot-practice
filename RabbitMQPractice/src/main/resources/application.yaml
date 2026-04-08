@@ -1,0 +1,21 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: durga
+    password: password
+    virtual-host: warehouse-vhost
+
+    # Prevent Spring from creating exchanges/queues
+    dynamic: false
+
+    template:
+      mandatory: true  # get callback if exchange/routing key is invalid
+
+    listener:
+      simple:
+        acknowledge-mode: manual
+#        prefetch: 1
+        concurrency: 2
+        max-concurrency: 8
+#        default-requeue-rejected: false

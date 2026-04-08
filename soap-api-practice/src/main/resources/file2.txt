@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:Envelope xmlns="http://example.com/common" xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns3="http://example.com/order">
+    <ns2:Header>
+        <requestId>REQ-12345</requestId>
+        <timestamp>2026-04-04T10:30:00</timestamp>
+    </ns2:Header>
+    <ns2:Body>
+        <ns3:getOrdersResponse>
+            <ns3:status>
+                <ns3:code>200</ns3:code>
+                <ns3:message>SUCCESS</ns3:message>
+            </ns3:status>
+            <ns3:customer>
+                <ns3:id>101</ns3:id>
+                <ns3:name>Durga</ns3:name>
+                <ns3:email>durga@example.com</ns3:email>
+            </ns3:customer>
+            <ns3:orders>
+                <ns3:order>
+                    <ns3:id>1</ns3:id>
+                    <ns3:orderDate>2026-04-01</ns3:orderDate>
+                    <ns3:items>
+                        <ns3:item>
+                            <ns3:name>Book</ns3:name>
+                            <ns3:price currency="INR">100</ns3:price>
+                        </ns3:item>
+                        <ns3:item>
+                            <ns3:name>Pen</ns3:name>
+                            <ns3:price currency="INR">20</ns3:price>
+                        </ns3:item>
+                    </ns3:items>
+                    <ns3:shipping>
+                        <ns3:address>
+                            <ns3:city>Chennai</ns3:city>
+                            <ns3:pinCode>600001</ns3:pinCode>
+                        </ns3:address>
+                    </ns3:shipping>
+                </ns3:order>
+                <ns3:order>
+                    <ns3:id>2</ns3:id>
+                    <ns3:orderDate>2026-04-02</ns3:orderDate>
+                    <ns3:items>
+                        <ns3:item>
+                            <ns3:name>Bag</ns3:name>
+                            <ns3:price currency="INR">500</ns3:price>
+                        </ns3:item>
+                    </ns3:items>
+                    <ns3:shipping>
+                        <ns3:address>
+                            <ns3:city>Bangalore</ns3:city>
+                            <ns3:pinCode>560001</ns3:pinCode>
+                        </ns3:address>
+                    </ns3:shipping>
+                </ns3:order>
+            </ns3:orders>
+        </ns3:getOrdersResponse>
+    </ns2:Body>
+</ns2:Envelope>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://example.com/common" xmlns:ord="http://example.com/order" xmlns:com="http://example.com/common" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <xs:import namespace="http://example.com/order" schemaLocation="orderStatus.xsd"/>
+  <xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="soapenv.xsd"/>
+  <xs:element name="ResponseHeader">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="com:requestId"/>
+        <xs:element ref="com:responseStatus"/>
+        <xs:element ref="com:timestamp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="requestId" type="xs:NCName"/>
+  <xs:element name="responseStatus" type="xs:NCName"/>
+  <xs:element name="timestamp" type="xs:NMTOKEN"/>
+</xs:schema>

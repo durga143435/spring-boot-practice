@@ -1,0 +1,12 @@
+{
+  "name": "sameer",
+  "age": 30,
+  "password": "sameer123",
+  "salary": "12312"
+
+}
+
+/*String name;
+    int age;
+    String password;
+    String salary;*/

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: real-project
+
+person:
+  account:
+    name: durga
+    id: 12312
+    type: saving
+  address:
+    city: bza
+    street: testStreet

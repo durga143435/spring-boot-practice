@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://example.com/order" xmlns:ord="http://example.com/order" xmlns:com="http://example.com/common" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <xs:import namespace="http://example.com/common" schemaLocation="com.xsd"/>
+<!--  <xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="soapenv.xsd"/>-->
+    <xs:element name="orderId" type="xs:NCName"/>
+    <xs:element name="totalItems" type="xs:integer"/>
+    <xs:element name="shipmentId" type="xs:NCName"/>
+    <xs:element name="carrier" type="xs:NCName"/>
+    <xs:element name="location" type="xs:NCName"/>
+    <xs:element name="time" type="xs:NMTOKEN"/>
+    <xs:element name="message" type="xs:string"/>
+    <xs:element name="status" type="xs:NCName"/>
+    <xs:element name="estimatedDelivery" type="xs:NMTOKEN"/>
+    <xs:element name="event">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ord:status"/>
+                <xs:element ref="ord:location"/>
+                <xs:element ref="ord:time"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="trackingEvents">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="ord:event"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="totalAmount">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:integer">
+                    <xs:attribute name="currency" use="required" type="xs:NCName"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="summary">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ord:totalItems"/>
+                <xs:element ref="ord:totalAmount"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="shipment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ord:shipmentId"/>
+                <xs:element ref="ord:carrier"/>
+                <xs:element ref="ord:estimatedDelivery"/>
+                <xs:element ref="ord:trackingEvents"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="warning">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ord:message"/>
+            </xs:sequence>
+            <xs:attribute name="code" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="warnings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ord:warning"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CreateOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ord:orderId"/>
+        <xs:element ref="ord:status"/>
+        <xs:element ref="ord:summary"/>
+        <xs:element ref="ord:shipment"/>
+        <xs:element ref="ord:warnings"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

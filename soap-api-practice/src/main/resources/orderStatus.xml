@@ -1,0 +1,53 @@
+<soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:ord="http://example.com/order"
+        xmlns:com="http://example.com/common">
+
+    <soapenv:Header>
+        <com:ResponseHeader>
+            <com:requestId>REQ-12345</com:requestId>
+            <com:status>SUCCESS</com:status>
+            <com:timestamp>2026-04-05T10:15:35</com:timestamp>
+        </com:ResponseHeader>
+    </soapenv:Header>
+
+    <soapenv:Body>
+        <ord:CreateOrderResponse>
+
+            <ord:orderId>ORD-999</ord:orderId>
+            <ord:status>CONFIRMED</ord:status>
+
+            <ord:summary>
+                <ord:totalItems>2</ord:totalItems>
+                <ord:totalAmount currency="INR">76000</ord:totalAmount>
+            </ord:summary>
+
+            <ord:shipment>
+                <ord:shipmentId>SHP123</ord:shipmentId>
+                <ord:carrier>BlueDart</ord:carrier>
+                <ord:estimatedDelivery>2026-04-08</ord:estimatedDelivery>
+
+                <ord:trackingEvents>
+                    <ord:event>
+                        <ord:status>DISPATCHED</ord:status>
+                        <ord:location>Chennai</ord:location>
+                        <ord:time>2026-04-05T12:00:00</ord:time>
+                    </ord:event>
+
+                    <ord:event>
+                        <ord:status>IN_TRANSIT</ord:status>
+                        <ord:location>Bangalore</ord:location>
+                        <ord:time>2026-04-06T09:00:00</ord:time>
+                    </ord:event>
+                </ord:trackingEvents>
+            </ord:shipment>
+
+            <ord:warnings>
+                <ord:warning code="LOW_STOCK">
+                    <ord:message>One item has limited stock</ord:message>
+                </ord:warning>
+            </ord:warnings>
+
+        </ord:CreateOrderResponse>
+    </soapenv:Body>
+</soapenv:Envelope>

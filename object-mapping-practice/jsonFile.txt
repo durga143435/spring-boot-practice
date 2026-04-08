@@ -1,0 +1,1 @@
+{"account":{"account_id":"1231","account_name":"saving","balance":5000,"currency":"rupee","transactions":[{"amount":1000,"txn_date":"1-04-26","txn_id":"tx-01","txn_type":"shopping"},{"amount":2500,"txn_date":"27-03-26","txn_id":"tx-02","txn_type":"personal"}]},"age":30,"lastName":"jagu","name":"Ram"}

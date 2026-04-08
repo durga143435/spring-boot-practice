@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://example.com/order" xmlns:ord="http://example.com/order" xmlns:com="http://example.com/common" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <xs:import namespace="http://example.com/common" schemaLocation="com.xsd"/>
+  <xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="soapenv.xsd"/>
+  <xs:element name="getOrdersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ord:status"/>
+        <xs:element ref="ord:customer"/>
+        <xs:element ref="ord:orders"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="status">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ord:code"/>
+        <xs:element ref="ord:message"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="code" type="xs:integer"/>
+  <xs:element name="message" type="xs:NCName"/>
+  <xs:element name="customer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ord:id"/>
+        <xs:element ref="ord:name"/>
+        <xs:element ref="ord:email"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="email" type="xs:string"/>
+  <xs:element name="orders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ord:order"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="order">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ord:id"/>
+        <xs:element ref="ord:orderDate"/>
+        <xs:element ref="ord:items"/>
+        <xs:element ref="ord:shipping"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="orderDate" type="xs:NMTOKEN"/>
+  <xs:element name="items">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ord:item"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ord:name"/>
+        <xs:element ref="ord:price"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="price">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:integer">
+          <xs:attribute name="currency" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="shipping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ord:address"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="address">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ord:city"/>
+        <xs:element ref="ord:pinCode"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="city" type="xs:NCName"/>
+  <xs:element name="pinCode" type="xs:integer"/>
+  <xs:element name="id" type="xs:integer"/>
+  <xs:element name="name" type="xs:NCName"/>
+</xs:schema>
